@@ -18,7 +18,7 @@ class Question extends React.Component {
         <dt>{this.props.text}</dt>
         {answers}
       </dl>
-      <button>Next</button>
+      <button onClick={this.props.handleNextQuestion}>Next</button>
     </div>
   }
 }
