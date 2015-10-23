@@ -3,7 +3,8 @@ import questions from '../data/questions'
 const defaultState = {
   currentQuestion: 0,
   questions: [],
-  questionsAreLoaded: false
+  questionsAreLoaded: false,
+  complete: false
 };
 
 export default function quizReducer(state = defaultState, action) {
@@ -13,6 +14,17 @@ export default function quizReducer(state = defaultState, action) {
         questions: questions,
         questionsAreLoaded: true
       });
+    case 'NEXT_QUESTION':
+      let nextQuestion = state.currentQuestion + 1;
+      let complete = false;
+      if(nextQuestion >= state.questions.length){
+        complete = true;
+        nextQuestion = 0;
+      }
+      return Object.assign({}, state, {
+        currentQuestion: nextQuestion,
+        complete: complete
+      })
     // case 'CREATE_TODO':
     //   return state.concat(action.text);
     // case 'EDIT_TODO':
