@@ -12,7 +12,8 @@ class EndScreen extends React.Component {
     return <div>
       1/10 Question Correct<br />
       You did Awesome!<br />
-      You are better than 65% of everyone else who took this quiz.
+      You are better than 65% of everyone else who took this quiz.<br />
+      <button onClick={this.props.handleRestart}>Restart</button>
     </div>
   }
 }

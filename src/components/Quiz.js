@@ -14,7 +14,7 @@ class Quiz extends React.Component {
     super(props);
     this.state = {};
 
-    window.setTimeout(this.props.actions.loadQuestions, 1000);
+    this.props.actions.fetchQuestions();
   }
 
   currentQuestion() {
@@ -27,12 +27,12 @@ class Quiz extends React.Component {
 
   render() {
     let component;
-    if(!this.props.questionsAreLoaded){
+    if(this.props.isLoading){
       component = <LoadingScreen title={this.props.title} />
     } else if( this.props.questions.length < 1 ) {
       component = <ErrorScreen message="No questions are available" />
-    } else if(this.props.complete) {
-      component = <EndScreen title={this.props.title} />
+    } else if(this.props.isComplete) {
+      component = <EndScreen title={this.props.title} handleRestart={this.props.actions.restart} />
     } else {
       component = <Question text={this.currentQuestion().text} answers={this.currentQuestion().answers} handleNextQuestion={this.props.actions.nextQuestion} />
     }
@@ -53,8 +53,8 @@ Quiz.propTypes = {
 function mapStateToProps(state) {
   return {
     questions: state.questions,
-    questionsAreLoaded: state.questionsAreLoaded,
-    complete: state.complete,
+    isLoading: state.isLoading,
+    isComplete: state.isComplete,
     currentQuestion: state.currentQuestion
   };
 }
