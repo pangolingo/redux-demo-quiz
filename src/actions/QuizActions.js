@@ -16,16 +16,24 @@ export function fetchQuestions(){
 }
 
 
-export function receiveQuestions(q) {
+export function receiveQuestions(questions) {
   return {
     type: 'RECEIVE_QUESTIONS',
-    questions: q
+    questions
   }
 }
 
 export function nextQuestion() {
   return {
     type: 'NEXT_QUESTION'
+  }
+}
+
+export function answerQuestion(questionID, answerID) {
+  return {
+    type: 'ANSWER_QUESTION',
+    questionID,
+    answerID
   }
 }
 

@@ -13,7 +13,10 @@ class Quiz extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    
+  }
 
+  componentDidMount(){
     this.props.actions.fetchQuestions();
   }
 
@@ -34,7 +37,7 @@ class Quiz extends React.Component {
     } else if(this.props.isComplete) {
       component = <EndScreen title={this.props.title} handleRestart={this.props.actions.restart} />
     } else {
-      component = <Question text={this.currentQuestion().text} answers={this.currentQuestion().answers} handleNextQuestion={this.props.actions.nextQuestion} />
+      component = <Question q={this.currentQuestion()} handleNextQuestion={this.props.actions.nextQuestion} handleAnswer={this.props.actions.answerQuestion} />
     }
     return <section>{component}</section>
   }

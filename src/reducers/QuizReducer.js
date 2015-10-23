@@ -4,7 +4,8 @@ const defaultState = {
   currentQuestion: 0,
   questions: [],
   isLoading: true,
-  isComplete: false
+  isComplete: false,
+  userAnswers: new Map()
 };
 
 export default function quizReducer(state = defaultState, action) {
@@ -32,7 +33,14 @@ export default function quizReducer(state = defaultState, action) {
     case 'RESTART':
       return Object.assign({}, state, {
         currentQuestion: 0,
-        isComplete: false
+        isComplete: false,
+        userAnswers: new Map()
+      });
+    case 'ANSWER_QUESTION':
+      let newUserAnswers = new Map(state.userAnswers);
+      newUserAnswers.set(action.questionID, action.answerID);
+      return Object.assign({}, state, {
+        userAnswers: newUserAnswers
       });
     // case 'CREATE_TODO':
     //   return state.concat(action.text);
