@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import ClassNames from 'classnames';
 
 class Answer extends React.Component {
 
@@ -10,14 +10,13 @@ class Answer extends React.Component {
   }
 
   render() {
-    var klass = classNames(
-      'answer',
-      {
-        'answer--correct': this.props.a.correct && this.props.isRevealed,
-        'answer--incorrect': !this.props.a.correct && this.props.isRevealed
-      }
-    );
-    return <span onClick={this.props.onClick} className={klass}>{this.props.a.text}</span>
+    let classNames = ClassNames({
+      'answer': true,
+      'answer--correct': this.props.a.correct && this.props.isRevealed,
+      'answer--incorrect': !this.props.a.correct && this.props.isRevealed,
+      'answer--selected': this.props.isSelected
+    });
+    return <span onClick={this.props.onClick} className={classNames}>{this.props.a.text}</span>
   }
 }
 

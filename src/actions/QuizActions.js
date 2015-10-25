@@ -1,8 +1,36 @@
 import questions from '../data/questions';
 
-export function requestQuestions() {
+let stats = {
+  totalUsers: 1000,
+  averageCorrect: 1,
+  // 900 users got 1 question correct
+  correctAmountsBreakdown: new Map([
+    [ 0, 100 ],
+    [ 1, 700 ],
+    [ 2, 200 ]
+  ])
+}
+
+
+export function fetchStats(){
+  return (dispatch) => {
+    dispatch(requestStats());
+    setTimeout(() => {
+      dispatch(receiveStats(stats))
+    }, 1000);
+  };
+}
+
+export function requestStats() {
   return {
-    type: 'REQUEST_QUESTIONS'
+    type: 'REQUEST_STATS'
+  }
+}
+
+export function receiveStats(stats) {
+  return {
+    type: 'RECEIVE_STATS',
+    stats
   }
 }
 
@@ -15,6 +43,11 @@ export function fetchQuestions(){
   };
 }
 
+export function requestQuestions() {
+  return {
+    type: 'REQUEST_QUESTIONS'
+  }
+}
 
 export function receiveQuestions(questions) {
   return {

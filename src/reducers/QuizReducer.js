@@ -5,7 +5,8 @@ const defaultState = {
   questions: [],
   isLoading: true,
   isComplete: false,
-  userAnswers: new Map()
+  userAnswers: new Map(),
+  stats: null
 };
 
 export default function quizReducer(state = defaultState, action) {
@@ -41,6 +42,10 @@ export default function quizReducer(state = defaultState, action) {
       newUserAnswers.set(action.questionID, action.answerID);
       return Object.assign({}, state, {
         userAnswers: newUserAnswers
+      });
+    case 'RECEIVE_STATS':
+      return Object.assign({}, state, {
+        stats: action.stats,
       });
     // case 'CREATE_TODO':
     //   return state.concat(action.text);

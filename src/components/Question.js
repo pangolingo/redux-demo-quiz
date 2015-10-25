@@ -1,5 +1,6 @@
 import React from 'react';
 import Answer from './Answer';
+import ClassNames from 'classnames';
 
 class Question extends React.Component {
 
@@ -12,7 +13,8 @@ class Question extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      isAnswered: false
+      isAnswered: false,
+      selectedAnswer: null
     })
   }
 
@@ -22,20 +24,30 @@ class Question extends React.Component {
     }
     this.props.handleAnswer(this.props.q.id, answer.id);
     this.setState({
-      isAnswered: true
+      isAnswered: true,
+      selectedAnswer: answer.id
     })
   }
 
   render() {
     let answers = this.props.q.answers.map((current) => {
-      return <dd key={current.id}><Answer a={current} onClick={this.handleAnswer.bind(this, current)} isRevealed={this.state.isAnswered} /></dd>
+      return <dd key={current.id}><Answer a={current} onClick={this.handleAnswer.bind(this, current)} isRevealed={this.state.isAnswered} isSelected={current.id == this.state.selectedAnswer} /></dd>
     })
+    let questionContainerClassName = ClassNames({
+      'list--unstyled': true,
+      'question-container--revealed': this.state.isAnswered
+    });
+    let btnClassName = ClassNames({
+      'btn': true,
+      'btn--default': true,
+      'invisible': !this.state.isAnswered
+    });
     return <div>
-      <dl>
-        <dt>{this.props.q.text}</dt>
+      <dl className={questionContainerClassName}>
+        <dt className='question'>{this.props.q.text}</dt>
         {answers}
       </dl>
-      <button onClick={this.props.handleNextQuestion} hidden={!this.state.isAnswered}>Next</button>
+      <button className={btnClassName} onClick={this.props.handleNextQuestion}>Next</button>
     </div>
   }
 }
