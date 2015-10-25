@@ -1,7 +1,8 @@
 const stats = {
   totalUsers: 1000,
   averageCorrect: 1,
-  // 900 users got 1 question correct
+  // number of questions correct, number of users
+  // (10 users got 0 question correct, etc)
   correctAmountsBreakdown: new Map([
     [ 0, 10 ],
     [ 1, 100 ],

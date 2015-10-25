@@ -1,5 +1,3 @@
-
-
 const defaultState = {
   title: '',
   currentQuestion: 0,
@@ -49,14 +47,8 @@ export default function quizReducer(state = defaultState, action) {
       });
     case 'RECEIVE_STATS':
       return Object.assign({}, state, {
-        stats: action.stats,
+        stats: action.stats
       });
-    // case 'CREATE_TODO':
-    //   return state.concat(action.text);
-    // case 'EDIT_TODO':
-    //   return state.set(action.id, action.text);
-    // case 'DELETE_TODO':
-    //   return state.delete(action.id);
     default:
       return state;
   }

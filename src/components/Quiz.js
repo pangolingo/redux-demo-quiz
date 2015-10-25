@@ -1,19 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import * as actionCreators from '../actions/QuizActions';
 import LoadingScreen from './LoadingScreen';
 import EndScreen from './EndScreen';
-// import Questions from './Questions';
 import Question from './Question';
 import ErrorScreen from './ErrorScreen';
-import * as actionCreators from '../actions/QuizActions';
-import { bindActionCreators } from 'redux';
 
 class Quiz extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {};
-    
   }
 
   componentDidMount(){
@@ -23,7 +22,7 @@ class Quiz extends React.Component {
   currentQuestion() {
     let question = this.props.questions[this.props.currentQuestion];
     if( undefined === question ){
-      throw "Question is not defined"
+      throw 'Question is not defined'
     }
     return question;
   }
@@ -31,7 +30,7 @@ class Quiz extends React.Component {
   render() {
     let component;
     if(this.props.isLoading){
-      component = <LoadingScreen title={this.props.title} />
+      component = <LoadingScreen />
     } else if( this.props.questions.length < 1 ) {
       component = <ErrorScreen message="No questions are available" />
     } else if(this.props.isComplete) {
@@ -48,14 +47,11 @@ class Quiz extends React.Component {
   }
 }
 
-Quiz.defaultProps = {
-  // questions: []
-};
+Quiz.defaultProps = {};
 
 Quiz.propTypes = {
-  id: React.PropTypes.number.isRequired,
+  id: React.PropTypes.number.isRequired
 }
-
 
 function mapStateToProps(state) {
   return {
@@ -71,10 +67,10 @@ function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(actionCreators, dispatch) };
 }
 
+// instead of export default Quiz;
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Quiz);
 
 
-// export default Quiz;

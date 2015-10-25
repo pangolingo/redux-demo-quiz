@@ -11,9 +11,9 @@ class EndScreen extends React.Component {
     };
 
     this.possibleScoreTexts = new Map([
-      [ 0.99, "You Killed It!" ],
-      [ 0.50, "You Did Okay!" ],
-      [ 0.33, "You Have Done Very Bad" ],
+      [ 0.99, 'You Killed It!' ],
+      [ 0.50, 'You Did Okay!' ],
+      [ 0.33, 'You Have Done Very Bad' ]
     ]);
   }
 
@@ -60,7 +60,6 @@ class EndScreen extends React.Component {
     return Math.floor(x / this.props.stats.totalUsers * 100);
   }
 
-
   render() {
     let betterThanX = this.betterThanX();
     if(betterThanX){
@@ -83,10 +82,9 @@ EndScreen.defaultProps = {
 };
 
 EndScreen.propTypes = {
-  title: React.PropTypes.string.isRequired
+  title: React.PropTypes.string.isRequired,
+  handleRestart: React.PropTypes.func.isRequired
 }
-
-
 
 function mapStateToProps(state) {
   return {
@@ -99,10 +97,8 @@ function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(actionCreators, dispatch) };
 }
 
+// instead of export default EndScreen;
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(EndScreen);
-
-
-// export default EndScreen;

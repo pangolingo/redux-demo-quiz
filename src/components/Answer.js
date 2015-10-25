@@ -11,25 +11,23 @@ class Answer extends React.Component {
 
   render() {
     let classNames = ClassNames({
+      'fake-checkbox': true,
       'btn--unstyled': true,
       'answer': true,
       'answer--correct': this.props.a.correct && this.props.isRevealed,
       'answer--incorrect': !this.props.a.correct && this.props.isRevealed,
       'answer--selected': this.props.isSelected
     });
-    //return <span onClick={this.props.onClick} tabIndex='0' role="button" onKeyDown={this.handleKeypress.bind(this)} className={classNames}>{this.props.a.text}</span>
-    // return <label><input type='radio' name='answer' /> {this.props.a.text}</label>
     return <button className={classNames} onClick={this.props.onClick} disabled={this.props.isRevealed}>{this.props.a.text}</button>
   }
 }
 
-Answer.defaultProps = {
-  // isCorrect: false
-};
+Answer.defaultProps = {};
 
 Answer.propTypes = {
-  // text: React.PropTypes.string.isRequired,
-  // isCorrect: React.PropTypes.bool
+  onClick: React.PropTypes.func.isRequired,
+  isRevealed: React.PropTypes.bool,
+  isSelected: React.PropTypes.bool
 }
 
 export default Answer;

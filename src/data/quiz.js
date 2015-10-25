@@ -1,7 +1,6 @@
-// cribbed from Clickhole
+// borrowed from Clickhole
 // http://www.clickhole.com/quiz/how-well-do-you-know-lyrics-space-oddity-3157
-const quiz = 
-{
+const quiz = {
   title: 'How Well Do You Know The Lyrics To ‘Space Oddity’? ',
   source: {
     url: 'http://www.clickhole.com/quiz/how-well-do-you-know-lyrics-space-oddity-3157',

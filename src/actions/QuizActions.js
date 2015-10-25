@@ -1,3 +1,4 @@
+// these include fake data, so we don't have to set up a server to do AJAX calls
 import quiz from '../data/quiz';
 import stats from '../data/stats';
 

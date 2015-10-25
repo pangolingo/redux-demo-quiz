@@ -7,11 +7,12 @@ class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAnswered: false
+      isAnswered: false,
+      selectedAnser: null
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps() {
     this.setState({
       isAnswered: false,
       selectedAnswer: null
@@ -56,12 +57,12 @@ class Question extends React.Component {
   }
 }
 
-Question.defaultProps = {
-};
+Question.defaultProps = {};
 
 Question.propTypes = {
-  // text: React.PropTypes.string.isRequired,
-  // answers: React.PropTypes.array.isRequired
+  q: React.PropTypes.object.isRequired,
+  handleNextQuestion: React.PropTypes.func.isRequired,
+  handleAnswer: React.PropTypes.func.isRequired
 }
 
 export default Question;

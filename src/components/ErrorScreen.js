@@ -4,7 +4,6 @@ class ErrorScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   render() {
@@ -12,8 +11,7 @@ class ErrorScreen extends React.Component {
   }
 }
 
-ErrorScreen.defaultProps = {
-};
+ErrorScreen.defaultProps = {};
 
 ErrorScreen.propTypes = {
   message: React.PropTypes.string.isRequired

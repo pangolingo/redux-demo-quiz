@@ -1,16 +1,12 @@
+import React from 'react';
+import Quiz from './Quiz'
+
 require('normalize.css');
 require('styles/App.scss');
 
-import React from 'react';
-import Quiz from './Quiz'
-// import questions from '../data/questions'
-
-class AppComponent extends React.Component {
+class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-
-    }
   }
 
   render() {
@@ -20,11 +16,6 @@ class AppComponent extends React.Component {
   }
 }
 
-AppComponent.defaultProps = {
-};
+App.defaultProps = {};
 
-
-
-
-
-export default AppComponent;
+export default App;

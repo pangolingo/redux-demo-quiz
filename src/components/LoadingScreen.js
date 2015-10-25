@@ -4,8 +4,6 @@ class LoadingScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-    };
   }
 
   render() {
@@ -23,8 +21,6 @@ class LoadingScreen extends React.Component {
 LoadingScreen.defaultProps = {
 };
 
-LoadingScreen.propTypes = {
-  title: React.PropTypes.string.isRequired
-}
+LoadingScreen.propTypes = {}
 
 export default LoadingScreen;

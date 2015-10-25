@@ -81,6 +81,25 @@ h3
   text-align: right;
 }
 
+.fake-checkbox {
+  position: relative;
+  padding-left: 40px;
+  &:before {
+    content: '';
+    // content: url(../svgs/checkmark.svg);
+    // background: none;
+    background-size: 18px;
+    // background-
+    border: 2px solid black;
+    display: block;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+}
+
 #app {
   max-width: 400px;
   margin: 0 auto;
@@ -102,7 +121,7 @@ h3
   font-style: italic;
   display: block;
   width: 100%;
-  padding: 10px;
+  padding: 10px 10px 10px 40px;
   color: #333737;
   margin-bottom: 5px;
   background-color: #f4f4f4;
@@ -119,11 +138,14 @@ h3
     opacity: 0.7
   }
   .answer--correct {
-    background-color: #deefda;
+    background-color: #bfdfb7;
     font-weight: bold;
     &:hover,
     &:focus {
-      background-color: #deefda;
+      background-color: #bfdfb7;
+    }
+    &:before {
+      background: url(../svgs/checkmark--green.svg) no-repeat center center / 18px;
     }
   }
   .answer--incorrect {
@@ -131,6 +153,9 @@ h3
     &:hover,
     &:focus {
       background-color: #e8aeae;
+    }
+    &:before {
+      background: url(../svgs/cross--red.svg) no-repeat center center / 15px;
     }
   }
 
@@ -147,6 +172,7 @@ h3
   background-color: #313535;
   color: white;
   padding: 20px;
+  margin-bottom: 1em;
 
   .btn {
     margin-bottom: 0;
@@ -212,3 +238,4 @@ h3
   text-align: center;
   font-style: italic;
 }
+
