@@ -15,7 +15,7 @@ class AppComponent extends React.Component {
 
   render() {
     return (
-      <Quiz title="My Lovely Quiz" />
+      <Quiz id={99} />
     );
   }
 }

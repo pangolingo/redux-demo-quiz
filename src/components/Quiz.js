@@ -17,7 +17,7 @@ class Quiz extends React.Component {
   }
 
   componentDidMount(){
-    this.props.actions.fetchQuestions();
+    this.props.actions.fetchQuizData();
   }
 
   currentQuestion() {
@@ -39,7 +39,12 @@ class Quiz extends React.Component {
     } else {
       component = <Question q={this.currentQuestion()} handleNextQuestion={this.props.actions.nextQuestion} handleAnswer={this.props.actions.answerQuestion} />
     }
-    return <section>{component}</section>
+    let source = ( this.props.source.url ? <span>Questions borrowed from <a href={this.props.source.url}>{this.props.source.name}</a></span> : '' );
+    return <section>
+      <h1 className="h1 quiz__title">{this.props.title}</h1>
+      {component}
+      <footer>{source}</footer>
+    </section>
   }
 }
 
@@ -48,17 +53,18 @@ Quiz.defaultProps = {
 };
 
 Quiz.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  questions: React.PropTypes.array.isRequired
+  id: React.PropTypes.number.isRequired,
 }
 
 
 function mapStateToProps(state) {
   return {
     questions: state.questions,
+    title: state.title,
     isLoading: state.isLoading,
     isComplete: state.isComplete,
-    currentQuestion: state.currentQuestion
+    currentQuestion: state.currentQuestion,
+    source: state.source
   };
 }
 function mapDispatchToProps(dispatch) {

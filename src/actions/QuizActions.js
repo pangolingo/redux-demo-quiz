@@ -1,15 +1,5 @@
-import questions from '../data/questions';
-
-let stats = {
-  totalUsers: 1000,
-  averageCorrect: 1,
-  // 900 users got 1 question correct
-  correctAmountsBreakdown: new Map([
-    [ 0, 100 ],
-    [ 1, 700 ],
-    [ 2, 200 ]
-  ])
-}
+import quiz from '../data/quiz';
+import stats from '../data/stats';
 
 
 export function fetchStats(){
@@ -34,25 +24,25 @@ export function receiveStats(stats) {
   }
 }
 
-export function fetchQuestions(){
+export function fetchQuizData(){
   return (dispatch) => {
-    dispatch(requestQuestions());
+    dispatch(requestQuizData());
     setTimeout(() => {
-      dispatch(receiveQuestions(questions))
-    }, 1000);
+      dispatch(receiveQuizData(quiz))
+    }, 2000);
   };
 }
 
-export function requestQuestions() {
+export function requestQuizData() {
   return {
-    type: 'REQUEST_QUESTIONS'
+    type: 'REQUEST_QUIZ_DATA'
   }
 }
 
-export function receiveQuestions(questions) {
+export function receiveQuizData(data) {
   return {
-    type: 'RECEIVE_QUESTIONS',
-    questions
+    type: 'RECEIVE_QUIZ_DATA',
+    data
   }
 }
 

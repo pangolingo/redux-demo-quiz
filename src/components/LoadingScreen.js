@@ -9,9 +9,13 @@ class LoadingScreen extends React.Component {
   }
 
   render() {
-    return <div>
-      <h1>{this.props.title}</h1>
-      loading...
+    return <div className='loading-screen'>
+      <div className="loading-animation">
+        <div className="loading-animation__bounce-1"></div>
+        <div className="loading-animation__bounce-2"></div>
+        <div className="loading-animation__bounce-3"></div>
+      </div>
+      loading&hellip;
     </div>
   }
 }

@@ -68,11 +68,13 @@ class EndScreen extends React.Component {
     } else {
       betterThanX = '';
     }
-    return <div>
-      {`${this.correctQuestions().length}/${this.props.questions.length} questions correct`}<br />
-      {this.scoreText()}<br />
-      {betterThanX}<br />
-      <button onClick={this.props.handleRestart}>Restart</button>
+    return <div className='end-screen'>
+    <span className="end-screen__number-correct">{`${this.correctQuestions().length}/${this.props.questions.length} questions correct`}</span>
+      <h2 className="h2 end-screen__outcome-text">{this.scoreText()}</h2>
+      <span clasName="end-screen__better-than">{betterThanX}</span>
+      <div className='button-row'>
+        <button className="btn btn--default" onClick={this.props.handleRestart}>Restart</button>
+      </div>
     </div>
   }
 }

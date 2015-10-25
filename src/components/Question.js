@@ -31,7 +31,9 @@ class Question extends React.Component {
 
   render() {
     let answers = this.props.q.answers.map((current) => {
-      return <dd key={current.id}><Answer a={current} onClick={this.handleAnswer.bind(this, current)} isRevealed={this.state.isAnswered} isSelected={current.id == this.state.selectedAnswer} /></dd>
+      return <dd key={current.id}>
+         <Answer a={current} onClick={this.handleAnswer.bind(this, current)} isRevealed={this.state.isAnswered} isSelected={current.id == this.state.selectedAnswer} />
+        </dd>
     })
     let questionContainerClassName = ClassNames({
       'list--unstyled': true,
@@ -44,10 +46,12 @@ class Question extends React.Component {
     });
     return <div>
       <dl className={questionContainerClassName}>
-        <dt className='question'>{this.props.q.text}</dt>
+        <dt className='question'>{`${this.props.q.id}. ${this.props.q.text}`}</dt>
         {answers}
       </dl>
-      <button className={btnClassName} onClick={this.props.handleNextQuestion}>Next</button>
+      <div className='button-row'>
+        <button className={btnClassName} onClick={this.props.handleNextQuestion}>Next</button>
+      </div>
     </div>
   }
 }

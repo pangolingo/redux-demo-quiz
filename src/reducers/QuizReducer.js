@@ -1,23 +1,27 @@
 
 
 const defaultState = {
+  title: '',
   currentQuestion: 0,
   questions: [],
   isLoading: true,
   isComplete: false,
   userAnswers: new Map(),
-  stats: null
+  stats: null,
+  source: {}
 };
 
 export default function quizReducer(state = defaultState, action) {
   switch(action.type) {
-    case 'REQUEST_QUESTIONS':
+    case 'REQUEST_QUIZ_DATA':
       return Object.assign({}, state, {
         isLoading: true
       });
-    case 'RECEIVE_QUESTIONS':
+    case 'RECEIVE_QUIZ_DATA':
       return Object.assign({}, state, {
-        questions: action.questions,
+        questions: action.data.questions,
+        title: action.data.title,
+        source: action.data.source,
         isLoading: false
       });
     case 'NEXT_QUESTION':
