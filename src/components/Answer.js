@@ -9,23 +9,17 @@ class Answer extends React.Component {
     };
   }
 
-  // for accessibility, accept space and enter in place of click
-  handleKeypress(e){
-    // 13 = ENTER
-    // 32 = SPACE
-    if(e.keyCode == 13 || e.keyCode == 32){
-      this.props.onClick(e);
-    }
-  }
-
   render() {
     let classNames = ClassNames({
+      'btn--unstyled': true,
       'answer': true,
       'answer--correct': this.props.a.correct && this.props.isRevealed,
       'answer--incorrect': !this.props.a.correct && this.props.isRevealed,
       'answer--selected': this.props.isSelected
     });
-    return <span onClick={this.props.onClick} tabIndex='0' role="button" onKeyDown={this.handleKeypress.bind(this)} className={classNames}>{this.props.a.text}</span>
+    //return <span onClick={this.props.onClick} tabIndex='0' role="button" onKeyDown={this.handleKeypress.bind(this)} className={classNames}>{this.props.a.text}</span>
+    // return <label><input type='radio' name='answer' /> {this.props.a.text}</label>
+    return <button className={classNames} onClick={this.props.onClick} disabled={this.props.isRevealed}>{this.props.a.text}</button>
   }
 }
 

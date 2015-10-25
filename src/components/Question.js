@@ -44,7 +44,7 @@ class Question extends React.Component {
       'btn--default': true,
       'invisible': !this.state.isAnswered
     });
-    return <div>
+    return <fieldset>
       <dl className={questionContainerClassName}>
         <dt className='question'>{`${this.props.q.id}. ${this.props.q.text}`}</dt>
         {answers}
@@ -52,7 +52,7 @@ class Question extends React.Component {
       <div className='button-row'>
         <button className={btnClassName} onClick={this.props.handleNextQuestion}>Next</button>
       </div>
-    </div>
+    </fieldset>
   }
 }
 

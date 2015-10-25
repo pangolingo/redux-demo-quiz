@@ -9,6 +9,13 @@ body {
   line-height: 1.4;
 }
 
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100%;
+}
+
 h1,
 .h1 {
   line-height: 1.2;
@@ -39,6 +46,37 @@ h3
   }
 }
 
+.btn {
+  border: 0 none;
+  clear: both;
+  // display: table;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: bold;
+  margin: 10px 0;
+  padding: 7px 10px;
+  text-transform: uppercase;
+}
+.btn--default {
+  background: #fe621e none repeat scroll 0 0;
+  color: #fff;
+}
+.btn--unstyled {
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.hidden {
+  display: none;
+}
+.invisible {
+  visibility: hidden;
+}
+
 .button-row {
   text-align: right;
 }
@@ -63,6 +101,7 @@ h3
   cursor: pointer;
   font-style: italic;
   display: block;
+  width: 100%;
   padding: 10px;
   color: #333737;
   margin-bottom: 5px;
@@ -101,28 +140,7 @@ h3
   }
 }
 
-.btn {
-  border: 0 none;
-  clear: both;
-  // display: table;
-  display: inline-block;
-  font-size: inherit;
-  font-weight: bold;
-  margin: 10px 0;
-  padding: 7px 10px;
-  text-transform: uppercase;
-}
-.btn--default {
-  background: #fe621e none repeat scroll 0 0;
-  color: #fff;
-}
 
-.hidden {
-  display: none;
-}
-.invisible {
-  visibility: hidden;
-}
 
 
 .end-screen {
