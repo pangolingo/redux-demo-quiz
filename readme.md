@@ -11,6 +11,6 @@ Quiz questions and basic styles came from [ClickHole](http://www.clickhole.com/q
 ##Running It
 
 - first run `npm install`
-- to run the app, `npm run`
+- to run the app, `npm start`
 - to build it: `npm run dist`
 - to lint it: `npm run lint`
